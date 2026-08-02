@@ -1,0 +1,80 @@
+import React from 'react';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import EmployeeDashboardScreen from '../screens/dashboard/EmployeeDashboardScreen';
+import ProductivityScoreScreen from '../screens/productivity/ProductivityScoreScreen';
+import WeeklyPerformanceScreen from '../screens/productivity/WeeklyPerformanceScreen';
+import AISuggestionsScreen from '../screens/productivity/AISuggestionsScreen';
+import WorkloadAnalysisScreen from '../screens/productivity/WorkloadAnalysisScreen';
+
+const Stack = createNativeStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#020617',
+      },
+
+      headerShadowVisible: false,
+
+      headerTintColor: '#FFFFFF',
+
+      headerTitleStyle: {
+        fontWeight: '800',
+        fontSize: 20,
+      },
+
+      headerTitleAlign: 'center',
+
+      contentStyle: {
+        backgroundColor: '#020617',
+      },
+
+      animation: 'slide_from_right',
+    }}
+  >
+    <Stack.Screen
+      name="EmployeeDashboard"
+      component={EmployeeDashboardScreen}
+      options={{
+        title: 'Dashboard',
+      }}
+    />
+
+    <Stack.Screen
+      name="ProductivityScore"
+      component={ProductivityScoreScreen}
+      options={{
+        title: 'Productivity',
+      }}
+    />
+
+    <Stack.Screen
+      name="WeeklyPerformance"
+      component={WeeklyPerformanceScreen}
+      options={{
+        title: 'Weekly Analytics',
+      }}
+    />
+
+    <Stack.Screen
+      name="AISuggestions"
+      component={AISuggestionsScreen}
+      options={{
+        title: 'AI Insights',
+      }}
+    />
+
+    <Stack.Screen
+      name="WorkloadAnalysis"
+      component={WorkloadAnalysisScreen}
+      options={{
+        title: 'Workload Analysis',
+      }}
+    />
+  </Stack.Navigator>
+);
+
+export default HomeStack;

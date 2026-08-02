@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "RemoteWorkTracker",
+    "slug": "remoteworktracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow Remote Work Tracker to use your location to verify attendance check-in against organization geo-fences."
+        }
+      ],
+      "expo-notifications"
+    ],
+    "android": {
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "INTERNET"
+      ],
+      "package": "com.remoteworktracker.app"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.remoteworktracker.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Allow Remote Work Tracker to use your location to verify attendance check-in against organization geo-fences."
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4ed51f70-3682-426f-9ce9-760bd9277ad5"
+      }
+    },
+    "owner": "faizan11_1"
+  }
+}
