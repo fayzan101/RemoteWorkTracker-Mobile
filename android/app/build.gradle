@@ -2,18 +2,18 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
-// Where package.json lives (`mobile/`), i.e. two levels above `android/app/`.
-def expoProjectRoot = rootDir.getAbsoluteFile().getParentFile().getParentFile().getAbsolutePath()
+// `rootDir` is the Gradle root (`android/`), so one parent up is `mobile/` (package.json).
+def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
 
 /**
- * Align with expo-template-bare-minimum (SDK 54).
- * `require.resolve('@expo/cli')` alone can resolve to the package directory; use `paths: [expo]` so `cliFile` is a real file.
+ * Expo bare-minimum (SDK 54) react block.
+ * `require.resolve('@expo/cli', { paths: [expo] })` ensures cliFile is a real file.
  * See https://github.com/expo/expo/issues/39820
  */
 react {
-    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", expoProjectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
+    entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
     reactNativeDir = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
-    hermesCommand = new File(["node", "--print", "require.resolve('hermes-compiler/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/hermesc/%OS-BIN%/hermesc"
+    hermesCommand = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/sdks/hermesc/%OS-BIN%/hermesc"
     codegenDir = new File(["node", "--print", "require.resolve('@react-native/codegen/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
 
     enableBundleCompression = (findProperty('android.enableBundleCompression') ?: false).toBoolean()
@@ -27,13 +27,13 @@ react {
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBuilds') ?: false).toBoolean()
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
  *
  * For example, to use the international variant, you can use:
- * `def jscFlavor = io.github.react-native-community:jsc-android-intl:2026004.+`
+ * `def jscFlavor = 'io.github.react-native-community:jsc-android-intl:2026004.+'`
  *
  * The international variant includes ICU i18n library and necessary data
  * allowing to use e.g. `Date.toLocaleString` and `String.localeCompare` that
@@ -54,6 +54,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
     }
     signingConfigs {
         debug {
@@ -71,15 +72,43 @@ android {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.debug
+            def enableShrinkResources = findProperty('android.enableShrinkResourcesInReleaseBuilds') ?: 'false'
+            shrinkResources enableShrinkResources.toBoolean()
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            def enablePngCrunchInRelease = findProperty('android.enablePngCrunchInReleaseBuilds') ?: 'true'
+            crunchPngs enablePngCrunchInRelease.toBoolean()
         }
+    }
+    packagingOptions {
+        jniLibs {
+            def enableLegacyPackaging = findProperty('expo.useLegacyPackaging') ?: 'false'
+            useLegacyPackaging enableLegacyPackaging.toBoolean()
+        }
+    }
+    androidResources {
+        ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
 }
 
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+
+    def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true"
+    def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true"
+    def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true"
+
+    if (isGifEnabled) {
+        implementation("com.facebook.fresco:animated-gif:${expoLibs.versions.fresco.get()}")
+    }
+
+    if (isWebpEnabled) {
+        implementation("com.facebook.fresco:webpsupport:${expoLibs.versions.fresco.get()}")
+        if (isWebpAnimatedEnabled) {
+            implementation("com.facebook.fresco:animated-webp:${expoLibs.versions.fresco.get()}")
+        }
+    }
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
