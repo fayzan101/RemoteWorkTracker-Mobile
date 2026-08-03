@@ -5,7 +5,7 @@ export const spacing = {
   lg: 24,
   xl: 32,
   xxl: 48,
-  /** Floating tab bar (~78) + bottom offset (16) + safe padding */
-  tabBarClearance: 110,
+  /** Floating tab bar (~68 content + padding) + bottom inset + margin */
+  tabBarClearance: 120,
 };
 

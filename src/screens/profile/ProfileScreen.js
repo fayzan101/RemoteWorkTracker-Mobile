@@ -88,22 +88,32 @@ const ProfileScreen = ({ navigation }) => {
         <ProfileCard
           title="Mood Tracker"
           subtitle="Daily check-ins"
-          onPress={() => navigation.navigate('MoodSubmission')}
+          onPress={() =>
+            navigation.navigate('WellnessTab', { screen: 'WellnessHome' })
+          }
         />
         <ProfileCard
           title="Reports"
           subtitle="Performance & wellbeing insights"
-          onPress={() => navigation.navigate('WellnessReports')}
+          onPress={() =>
+            navigation.navigate('WellnessTab', { screen: 'WellnessReports' })
+          }
         />
         <ProfileCard
           title="Burnout Alerts"
           subtitle="Risk detection system"
-          onPress={() => navigation.navigate('BurnoutAlerts')}
+          onPress={() =>
+            navigation.navigate('WellnessTab', { screen: 'BurnoutAlerts' })
+          }
         />
         <ProfileCard
           title="AI Suggestions"
           subtitle="Personalized recommendations"
-          onPress={() => navigation.navigate('AIWellnessSuggestions')}
+          onPress={() =>
+            navigation.navigate('WellnessTab', {
+              screen: 'AIWellnessSuggestions',
+            })
+          }
         />
       </View>
 

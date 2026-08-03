@@ -5,6 +5,7 @@ import ProductivityScoreScreen from '../screens/productivity/ProductivityScoreSc
 import WeeklyPerformanceScreen from '../screens/productivity/WeeklyPerformanceScreen';
 import AISuggestionsScreen from '../screens/productivity/AISuggestionsScreen';
 import WorkloadAnalysisScreen from '../screens/productivity/WorkloadAnalysisScreen';
+import NotificationCenterScreen from '../screens/notifications/NotificationCenterScreen';
 import { stackScreenOptions } from './stackScreenOptions';
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +16,11 @@ const HomeStack = () => (
       name="EmployeeDashboard"
       component={EmployeeDashboardScreen}
       options={{ title: 'Dashboard' }}
+    />
+    <Stack.Screen
+      name="NotificationCenter"
+      component={NotificationCenterScreen}
+      options={{ title: 'Notifications' }}
     />
     <Stack.Screen
       name="ProductivityScore"

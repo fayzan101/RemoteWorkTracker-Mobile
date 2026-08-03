@@ -122,11 +122,7 @@ const EmployeeDashboardScreen = ({ navigation }) => {
         </SectionCard>
 
         <SectionCard title="Notifications" subtitle={`${unread} unread`}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('NotificationsTab', { screen: 'NotificationCenter' })
-            }
-          >
+          <TouchableOpacity onPress={() => navigation.navigate('NotificationCenter')}>
             <Text style={styles.link}>Open Notification Center →</Text>
           </TouchableOpacity>
         </SectionCard>

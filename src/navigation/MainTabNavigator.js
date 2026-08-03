@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Platform, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import HomeStack from './HomeStack';
 import TasksStack from './TasksStack';
 import AttendanceStack from './AttendanceStack';
-import NotificationsStack from './NotificationsStack';
+import WellnessStack from './WellnessStack';
 import ProfileStack from './ProfileStack';
 import { SidebarProvider } from './SidebarContext';
 import AppSidebar from './AppSidebar';
@@ -37,11 +38,11 @@ const TABS = [
     iconActive: 'calendar',
   },
   {
-    name: 'NotificationsTab',
-    title: 'Alerts',
-    component: NotificationsStack,
-    icon: 'notifications-outline',
-    iconActive: 'notifications',
+    name: 'WellnessTab',
+    title: 'Wellness',
+    component: WellnessStack,
+    icon: 'leaf-outline',
+    iconActive: 'leaf',
   },
   {
     name: 'ProfileTab',
@@ -52,38 +53,67 @@ const TABS = [
   },
 ];
 
-function TabBarButton({ accessibilityState, onPress, onLongPress, label, icon, iconActive }) {
-  const focused = accessibilityState?.selected;
+function CustomTabBar({ state, descriptors, navigation }) {
+  const insets = useSafeAreaInsets();
+  const bottomGap = Math.max(insets.bottom, 10);
 
   return (
-    <Pressable
-      onPress={onPress}
-      onLongPress={onLongPress}
-      style={styles.tabButton}
-      accessibilityRole="button"
-      accessibilityState={accessibilityState}
-    >
-      <View style={[styles.iconPill, focused && styles.iconPillActive]}>
-        <Ionicons
-          name={focused ? iconActive : icon}
-          size={20}
-          color={focused ? colors.textOnPrimary : colors.tabInactive}
-        />
+    <View style={[styles.tabBarWrap, { bottom: bottomGap }]} pointerEvents="box-none">
+      <View style={styles.tabBar}>
+        {state.routes.map((route, index) => {
+          const focused = state.index === index;
+          const meta = TABS.find((t) => t.name === route.name) || TABS[index];
+          const { options } = descriptors[route.key];
+
+          const onPress = () => {
+            const event = navigation.emit({
+              type: 'tabPress',
+              target: route.key,
+              canPreventDefault: true,
+            });
+            if (!focused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          return (
+            <Pressable
+              key={route.key}
+              onPress={onPress}
+              onLongPress={() =>
+                navigation.emit({ type: 'tabLongPress', target: route.key })
+              }
+              style={styles.tabButton}
+              accessibilityRole="button"
+              accessibilityState={focused ? { selected: true } : {}}
+              accessibilityLabel={options.tabBarAccessibilityLabel || meta.title}
+            >
+              <View style={[styles.iconPill, focused && styles.iconPillActive]}>
+                <Ionicons
+                  name={focused ? meta.iconActive : meta.icon}
+                  size={22}
+                  color={focused ? colors.textOnPrimary : colors.tabInactive}
+                />
+              </View>
+              <Text
+                style={[styles.tabLabel, focused && styles.tabLabelActive]}
+                numberOfLines={1}
+              >
+                {meta.title}
+              </Text>
+            </Pressable>
+          );
+        })}
       </View>
-      <Text style={[styles.tabLabel, focused && styles.tabLabelActive]} numberOfLines={1}>
-        {label}
-      </Text>
-    </Pressable>
+    </View>
   );
 }
 
 const MainTabs = () => (
   <Tab.Navigator
+    tabBar={(props) => <CustomTabBar {...props} />}
     screenOptions={{
       headerShown: false,
-      tabBarShowLabel: false,
-      tabBarStyle: styles.tabBar,
-      tabBarHideOnKeyboard: true,
     }}
   >
     {TABS.map((tab) => (
@@ -91,17 +121,7 @@ const MainTabs = () => (
         key={tab.name}
         name={tab.name}
         component={tab.component}
-        options={{
-          title: tab.title,
-          tabBarButton: (props) => (
-            <TabBarButton
-              {...props}
-              label={tab.title}
-              icon={tab.icon}
-              iconActive={tab.iconActive}
-            />
-          ),
-        }}
+        options={{ title: tab.title }}
       />
     ))}
   </Tab.Navigator>
@@ -115,52 +135,56 @@ const MainTabNavigator = () => (
 );
 
 const styles = StyleSheet.create({
-  tabBar: {
+  tabBarWrap: {
     position: 'absolute',
-    left: 16,
-    right: 16,
-    bottom: Platform.OS === 'ios' ? 22 : 14,
-    height: 72,
-    borderRadius: 26,
+    left: 14,
+    right: 14,
+  },
+  tabBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    minHeight: 68,
+    paddingHorizontal: 6,
+    paddingVertical: 10,
+    borderRadius: 24,
     backgroundColor: '#FFFFFF',
-    borderTopWidth: 0,
     borderWidth: 1,
-    borderColor: 'rgba(15, 118, 110, 0.14)',
-    paddingHorizontal: 4,
+    borderColor: 'rgba(15, 118, 110, 0.16)',
     shadowColor: '#0F766E',
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.16,
-    shadowRadius: 18,
-    elevation: 16,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.14,
+    shadowRadius: 16,
+    elevation: 12,
+    ...Platform.select({
+      android: { overflow: 'visible' },
+      ios: {},
+    }),
   },
   tabButton: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 8,
-    paddingBottom: 6,
+    paddingVertical: 2,
   },
   iconPill: {
-    width: 42,
-    height: 30,
-    borderRadius: 15,
+    width: 44,
+    height: 34,
+    borderRadius: 17,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 3,
+    marginBottom: 4,
+    backgroundColor: 'transparent',
   },
   iconPillActive: {
     backgroundColor: colors.primary,
-    shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 6,
-    elevation: 4,
   },
   tabLabel: {
-    fontSize: 10,
+    fontSize: 11,
+    lineHeight: 14,
     fontWeight: '600',
     color: colors.tabInactive,
-    letterSpacing: 0.15,
+    includeFontPadding: false,
+    textAlign: 'center',
   },
   tabLabelActive: {
     color: colors.primary,

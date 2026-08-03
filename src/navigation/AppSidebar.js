@@ -23,7 +23,7 @@ const NAV_ITEMS = [
       { label: 'Dashboard', icon: 'home-outline', tab: 'HomeTab', screen: 'EmployeeDashboard' },
       { label: 'My Tasks', icon: 'checkmark-circle-outline', tab: 'TasksTab', screen: 'MyTasks' },
       { label: 'Attendance', icon: 'calendar-outline', tab: 'AttendanceTab', screen: 'AttendanceHome' },
-      { label: 'Notifications', icon: 'notifications-outline', tab: 'NotificationsTab', screen: 'NotificationCenter' },
+      { label: 'Notifications', icon: 'notifications-outline', tab: 'HomeTab', screen: 'NotificationCenter' },
       { label: 'Profile', icon: 'person-outline', tab: 'ProfileTab', screen: 'ProfileMain' },
     ],
   },
@@ -39,8 +39,8 @@ const NAV_ITEMS = [
   {
     section: 'Wellness & Learning',
     items: [
-      { label: 'Mood Tracker', icon: 'happy-outline', tab: 'ProfileTab', screen: 'MoodSubmission' },
-      { label: 'Wellness Tips', icon: 'leaf-outline', tab: 'ProfileTab', screen: 'AIWellnessSuggestions' },
+      { label: 'Mood Tracker', icon: 'happy-outline', tab: 'WellnessTab', screen: 'WellnessHome' },
+      { label: 'Wellness Tips', icon: 'leaf-outline', tab: 'WellnessTab', screen: 'AIWellnessSuggestions' },
       { label: 'Courses', icon: 'school-outline', tab: 'ProfileTab', screen: 'RecommendedCourses' },
     ],
   },

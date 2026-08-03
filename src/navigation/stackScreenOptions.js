@@ -1,8 +1,9 @@
 import React from 'react';
-import { Pressable, StyleSheet, Platform } from 'react-native';
+import { Pressable, StyleSheet, Platform, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { colors } from '../theme/colors';
 import { useSidebar } from './SidebarContext';
+import { navigationRef } from './navigationRef';
 
 export function HeaderBackButton({ onPress }) {
   return (
@@ -11,7 +12,7 @@ export function HeaderBackButton({ onPress }) {
       hitSlop={12}
       accessibilityRole="button"
       accessibilityLabel="Go back"
-      style={styles.hit}
+      style={styles.hitLeft}
     >
       <Ionicons name="chevron-back" size={28} color={colors.appBarText} />
     </Pressable>
@@ -26,21 +27,46 @@ export function HeaderMenuButton() {
       hitSlop={12}
       accessibilityRole="button"
       accessibilityLabel="Open menu"
-      style={styles.hit}
+      style={styles.hitLeft}
     >
       <Ionicons name="menu" size={26} color={colors.appBarText} />
     </Pressable>
   );
 }
 
-/** Shared native-stack header — teal app bar, explicit back / optional menu. */
+export function HeaderNotificationButton() {
+  return (
+    <Pressable
+      onPress={() => {
+        if (navigationRef.isReady()) {
+          navigationRef.navigate('Main', {
+            screen: 'HomeTab',
+            params: { screen: 'NotificationCenter' },
+          });
+        }
+      }}
+      hitSlop={12}
+      accessibilityRole="button"
+      accessibilityLabel="Notifications"
+      style={styles.hitRight}
+    >
+      <View style={styles.bellWrap}>
+        <Ionicons name="notifications-outline" size={22} color={colors.appBarText} />
+      </View>
+    </Pressable>
+  );
+}
+
+/** Shared native-stack header — teal app bar, back / menu, notification bell. */
 export const stackScreenOptions = ({ navigation, route }) => {
   const isRoot =
     route?.name === 'EmployeeDashboard' ||
     route?.name === 'MyTasks' ||
     route?.name === 'AttendanceHome' ||
-    route?.name === 'NotificationCenter' ||
+    route?.name === 'WellnessHome' ||
     route?.name === 'ProfileMain';
+
+  const hideBell = route?.name === 'NotificationCenter';
 
   return {
     headerStyle: {
@@ -69,15 +95,31 @@ export const stackScreenOptions = ({ navigation, route }) => {
       }
       return null;
     },
+    headerRight: () => (hideBell ? null : <HeaderNotificationButton />),
   };
 };
 
 const styles = StyleSheet.create({
-  hit: {
+  hitLeft: {
     marginLeft: Platform.OS === 'ios' ? 4 : 0,
     paddingHorizontal: 6,
     paddingVertical: 4,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  hitRight: {
+    marginRight: Platform.OS === 'ios' ? 4 : 8,
+    paddingHorizontal: 6,
+    paddingVertical: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bellWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.16)',
   },
 });
