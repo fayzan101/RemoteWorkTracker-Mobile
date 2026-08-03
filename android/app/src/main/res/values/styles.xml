@@ -30,4 +30,12 @@
 
     </style>
 
+    <!-- Expo / Android 12+ splash theme shown before JS loads -->
+    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splashscreen_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splashscreen_logo</item>
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+        <item name="android:windowSplashScreenBehavior">icon_preferred</item>
+    </style>
+
 </resources>
