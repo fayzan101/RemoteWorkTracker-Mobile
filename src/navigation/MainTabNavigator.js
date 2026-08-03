@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform, Pressable } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -8,95 +8,110 @@ import TasksStack from './TasksStack';
 import AttendanceStack from './AttendanceStack';
 import NotificationsStack from './NotificationsStack';
 import ProfileStack from './ProfileStack';
+import { SidebarProvider } from './SidebarContext';
+import AppSidebar from './AppSidebar';
 import { colors } from '../theme/colors';
 
 const Tab = createBottomTabNavigator();
 
-const TabIcon = ({ focused, icon }) => (
-  <View style={[styles.iconWrapper, focused && styles.activeIconWrapper]}>
-    <Ionicons
-      name={icon}
-      size={22}
-      color={focused ? colors.textOnPrimary : colors.tabInactive}
-    />
-  </View>
-);
+const TABS = [
+  {
+    name: 'HomeTab',
+    title: 'Home',
+    component: HomeStack,
+    icon: 'home-outline',
+    iconActive: 'home',
+  },
+  {
+    name: 'TasksTab',
+    title: 'Tasks',
+    component: TasksStack,
+    icon: 'checkmark-circle-outline',
+    iconActive: 'checkmark-circle',
+  },
+  {
+    name: 'AttendanceTab',
+    title: 'Attend',
+    component: AttendanceStack,
+    icon: 'calendar-outline',
+    iconActive: 'calendar',
+  },
+  {
+    name: 'NotificationsTab',
+    title: 'Alerts',
+    component: NotificationsStack,
+    icon: 'notifications-outline',
+    iconActive: 'notifications',
+  },
+  {
+    name: 'ProfileTab',
+    title: 'Profile',
+    component: ProfileStack,
+    icon: 'person-outline',
+    iconActive: 'person',
+  },
+];
 
-const MainTabNavigator = () => (
+function TabBarButton({ accessibilityState, onPress, onLongPress, label, icon, iconActive }) {
+  const focused = accessibilityState?.selected;
+
+  return (
+    <Pressable
+      onPress={onPress}
+      onLongPress={onLongPress}
+      style={styles.tabButton}
+      accessibilityRole="button"
+      accessibilityState={accessibilityState}
+    >
+      <View style={[styles.iconPill, focused && styles.iconPillActive]}>
+        <Ionicons
+          name={focused ? iconActive : icon}
+          size={20}
+          color={focused ? colors.textOnPrimary : colors.tabInactive}
+        />
+      </View>
+      <Text style={[styles.tabLabel, focused && styles.tabLabelActive]} numberOfLines={1}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}
+
+const MainTabs = () => (
   <Tab.Navigator
     screenOptions={{
       headerShown: false,
-      tabBarShowLabel: true,
+      tabBarShowLabel: false,
       tabBarStyle: styles.tabBar,
-      tabBarLabelStyle: styles.label,
-      tabBarActiveTintColor: colors.tabActive,
-      tabBarInactiveTintColor: colors.tabInactive,
       tabBarHideOnKeyboard: true,
     }}
   >
-    <Tab.Screen
-      name="HomeTab"
-      component={HomeStack}
-      options={{
-        title: 'Home',
-        tabBarIcon: ({ focused }) => (
-          <TabIcon focused={focused} icon={focused ? 'home' : 'home-outline'} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="TasksTab"
-      component={TasksStack}
-      options={{
-        title: 'Tasks',
-        tabBarIcon: ({ focused }) => (
-          <TabIcon
-            focused={focused}
-            icon={focused ? 'checkmark-circle' : 'checkmark-circle-outline'}
-          />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="AttendanceTab"
-      component={AttendanceStack}
-      options={{
-        title: 'Attendance',
-        tabBarIcon: ({ focused }) => (
-          <TabIcon
-            focused={focused}
-            icon={focused ? 'calendar' : 'calendar-outline'}
-          />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="NotificationsTab"
-      component={NotificationsStack}
-      options={{
-        title: 'Alerts',
-        tabBarIcon: ({ focused }) => (
-          <TabIcon
-            focused={focused}
-            icon={focused ? 'notifications' : 'notifications-outline'}
-          />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="ProfileTab"
-      component={ProfileStack}
-      options={{
-        title: 'Profile',
-        tabBarIcon: ({ focused }) => (
-          <TabIcon
-            focused={focused}
-            icon={focused ? 'person' : 'person-outline'}
-          />
-        ),
-      }}
-    />
+    {TABS.map((tab) => (
+      <Tab.Screen
+        key={tab.name}
+        name={tab.name}
+        component={tab.component}
+        options={{
+          title: tab.title,
+          tabBarButton: (props) => (
+            <TabBarButton
+              {...props}
+              label={tab.title}
+              icon={tab.icon}
+              iconActive={tab.iconActive}
+            />
+          ),
+        }}
+      />
+    ))}
   </Tab.Navigator>
+);
+
+const MainTabNavigator = () => (
+  <SidebarProvider>
+    <MainTabs />
+    <AppSidebar />
+  </SidebarProvider>
 );
 
 const styles = StyleSheet.create({
@@ -104,40 +119,52 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 16,
     right: 16,
-    bottom: 16,
-    height: 78,
-    borderRadius: 28,
-    backgroundColor: colors.tabBar,
+    bottom: Platform.OS === 'ios' ? 22 : 14,
+    height: 72,
+    borderRadius: 26,
+    backgroundColor: '#FFFFFF',
     borderTopWidth: 0,
     borderWidth: 1,
-    borderColor: colors.tabBarBorder,
-    paddingTop: 10,
-    paddingBottom: 10,
-    shadowColor: '#0F172A',
+    borderColor: 'rgba(15, 118, 110, 0.14)',
+    paddingHorizontal: 4,
+    shadowColor: '#0F766E',
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.16,
     shadowRadius: 18,
-    elevation: 12,
+    elevation: 16,
   },
-  label: {
-    fontSize: 11,
-    fontWeight: '700',
-    marginBottom: 4,
-  },
-  iconWrapper: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    justifyContent: 'center',
+  tabButton: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 8,
+    paddingBottom: 6,
   },
-  activeIconWrapper: {
+  iconPill: {
+    width: 42,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 3,
+  },
+  iconPillActive: {
     backgroundColor: colors.primary,
     shadowColor: colors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.28,
-    shadowRadius: 8,
-    elevation: 6,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  tabLabel: {
+    fontSize: 10,
+    fontWeight: '600',
+    color: colors.tabInactive,
+    letterSpacing: 0.15,
+  },
+  tabLabelActive: {
+    color: colors.primary,
+    fontWeight: '800',
   },
 });
 
