@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007AFF',
-    paddingVertical: 12,
+    backgroundColor: '#0F766E',
+    paddingVertical: 14,
     paddingHorizontal: 24,
-    borderRadius: 8,
+    borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 120,

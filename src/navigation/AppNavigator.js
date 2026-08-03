@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -6,17 +6,30 @@ import { useAuth } from '../context/AuthContext';
 import MainTabNavigator from './MainTabNavigator';
 import Login from '../screens/Login/Login';
 import { navigationRef } from './navigationRef';
-
+import { hideAppSplash } from '../utils/splash';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   const { initializing, isSignedIn } = useAuth();
 
+  useEffect(() => {
+    if (!initializing) {
+      hideAppSplash();
+    }
+  }, [initializing]);
+
   if (initializing) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size="large" />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#0F172A',
+        }}
+      >
+        <ActivityIndicator size="large" color="#14B8A6" />
       </View>
     );
   }
@@ -25,7 +38,7 @@ const AppNavigator = () => {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{
-          headerStyle: { backgroundColor: '#007AFF' },
+          headerStyle: { backgroundColor: '#0F766E' },
           headerTintColor: '#fff',
           headerTitleStyle: { fontWeight: 'bold' },
         }}
