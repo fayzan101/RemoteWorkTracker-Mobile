@@ -69,7 +69,7 @@ const NotificationCenterScreen = () => {
                   disabled={Boolean(busyId)}
                 >
                   {busyId === n.id ? (
-                    <ActivityIndicator color="#60A5FA" />
+                    <ActivityIndicator color="#0F766E" />
                   ) : (
                     <Text style={styles.actionText}>Mark read</Text>
                   )}
@@ -93,48 +93,48 @@ const NotificationCenterScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF', marginBottom: 12 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A', marginBottom: 12 },
   markAll: {
     alignSelf: 'flex-start',
     marginBottom: 14,
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 10,
-    backgroundColor: 'rgba(59,130,246,0.15)',
+    backgroundColor: 'rgba(15,118,110,0.12)',
   },
-  markAllText: { color: '#60A5FA', fontWeight: '700', fontSize: 13 },
+  markAllText: { color: '#0F766E', fontWeight: '700', fontSize: 13 },
   error: { color: '#F87171', marginBottom: 10, fontSize: 13 },
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 16,
     marginBottom: 14,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
   cardRead: { opacity: 0.7 },
   row: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10 },
   badge: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#60A5FA',
-    backgroundColor: 'rgba(59,130,246,0.12)',
+    color: '#0F766E',
+    backgroundColor: 'rgba(15,118,110,0.12)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 10,
     overflow: 'hidden',
   },
-  title: { fontSize: 16, fontWeight: '600', color: '#E2E8F0', lineHeight: 22 },
-  time: { fontSize: 12, color: '#94A3B8' },
+  title: { fontSize: 16, fontWeight: '600', color: '#0F172A', lineHeight: 22 },
+  time: { fontSize: 12, color: '#64748B' },
   actions: { flexDirection: 'row', gap: 10, marginTop: 12 },
   actionBtn: {
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 10,
-    backgroundColor: 'rgba(59,130,246,0.15)',
+    backgroundColor: 'rgba(15,118,110,0.12)',
   },
-  actionText: { color: '#60A5FA', fontWeight: '700', fontSize: 12 },
+  actionText: { color: '#0F766E', fontWeight: '700', fontSize: 12 },
   deleteBtn: { backgroundColor: 'rgba(248,113,113,0.12)' },
   deleteText: { color: '#F87171', fontWeight: '700', fontSize: 12 },
 });

@@ -75,29 +75,29 @@ const UpdateTaskStatusScreen = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 20 },
   card: {
     padding: 16,
     borderRadius: 16,
     marginBottom: 12,
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
   row: { flexDirection: 'row', alignItems: 'center' },
   dot: { width: 12, height: 12, borderRadius: 6, marginRight: 10 },
-  label: { fontSize: 15, fontWeight: '700', color: '#E2E8F0' },
+  label: { fontSize: 15, fontWeight: '700', color: '#0F172A' },
   selected: { fontSize: 12, fontWeight: '800', marginTop: 6 },
   saveBtn: {
     marginTop: 10,
     padding: 14,
     borderRadius: 14,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#0F766E',
     alignItems: 'center',
   },
-  saveText: { color: '#FFFFFF', fontWeight: '800' },
+  saveText: { color: '#0F172A', fontWeight: '800' },
 });
 
 export default UpdateTaskStatusScreen;

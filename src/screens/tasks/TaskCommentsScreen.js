@@ -99,18 +99,18 @@ const TaskCommentsScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 20,
   },
@@ -126,35 +126,35 @@ const styles = StyleSheet.create({
     maxWidth: '85%',
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   selfBubble: {
-    backgroundColor: 'rgba(59,130,246,0.15)',
+    backgroundColor: 'rgba(15,118,110,0.12)',
     alignSelf: 'flex-end',
   },
 
   otherBubble: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     alignSelf: 'flex-start',
   },
 
   author: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#60A5FA',
+    color: '#0F766E',
     marginBottom: 4,
   },
 
   text: {
     fontSize: 14,
-    color: '#E2E8F0',
+    color: '#0F172A',
     lineHeight: 20,
   },
 
   time: {
     fontSize: 10,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
   },
 
@@ -168,18 +168,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
 
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 16,
     padding: 12,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   input: {
     flex: 1,
     fontSize: 14,
-    color: '#E2E8F0',
+    color: '#0F172A',
     maxHeight: 100,
     paddingRight: 10,
   },
@@ -187,12 +187,12 @@ const styles = StyleSheet.create({
   sendBtn: {
     paddingHorizontal: 14,
     paddingVertical: 8,
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#0F766E',
     borderRadius: 10,
   },
 
   sendText: {
-    color: '#FFFFFF',
+    color: '#0F172A',
     fontWeight: '800',
     fontSize: 12,
   },

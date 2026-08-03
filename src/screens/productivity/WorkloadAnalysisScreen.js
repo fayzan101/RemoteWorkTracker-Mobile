@@ -70,28 +70,28 @@ const WorkloadAnalysisScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 28, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20, lineHeight: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 28, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 20, lineHeight: 20 },
   section: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#60A5FA',
+    color: '#0F766E',
     marginBottom: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 16,
     marginBottom: 14,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
-  title: { fontSize: 16, fontWeight: '700', color: '#E2E8F0' },
-  meta: { marginTop: 6, fontSize: 13, color: '#94A3B8' },
-  score: { marginTop: 8, color: '#38BDF8', fontWeight: '700', fontSize: 14 },
+  title: { fontSize: 16, fontWeight: '700', color: '#0F172A' },
+  meta: { marginTop: 6, fontSize: 13, color: '#64748B' },
+  score: { marginTop: 8, color: '#0F766E', fontWeight: '700', fontSize: 14 },
 });
 
 export default WorkloadAnalysisScreen;

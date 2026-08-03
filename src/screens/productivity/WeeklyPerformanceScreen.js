@@ -46,9 +46,9 @@ export const WeeklyPerformanceScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 28, fontWeight: '800', color: '#FFFFFF' },
-  muted: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 24 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 28, fontWeight: '800', color: '#0F172A' },
+  muted: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 24 },
   chart: {
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   barWrap: { alignItems: 'center', flex: 1 },
-  bar: { width: 18, backgroundColor: '#3B82F6', borderRadius: 6, opacity: 0.9 },
+  bar: { width: 18, backgroundColor: '#0F766E', borderRadius: 6, opacity: 0.9 },
   day: { marginTop: 10, fontSize: 12, color: '#64748B' },
 });
 

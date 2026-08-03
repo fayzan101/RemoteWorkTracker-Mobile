@@ -68,30 +68,30 @@ const ProjectListScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginBottom: 20,
     marginTop: 6,
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     borderRadius: 20,
     marginBottom: 14,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   row: {
@@ -103,14 +103,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#E2E8F0',
+    color: '#0F172A',
   },
 
   status: {
     fontSize: 12,
     fontWeight: '700',
-    color: '#60A5FA',
-    backgroundColor: 'rgba(59,130,246,0.12)',
+    color: '#0F766E',
+    backgroundColor: 'rgba(15,118,110,0.12)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 10,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
 
   progressBar: {
     height: 8,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: '#F8FAFC',
     borderRadius: 10,
     overflow: 'hidden',
     marginBottom: 10,
@@ -127,12 +127,12 @@ const styles = StyleSheet.create({
 
   progressFill: {
     height: '100%',
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#0F766E',
   },
 
   meta: {
     fontSize: 12,
-    color: '#94A3B8',
+    color: '#64748B',
   },
 });
 

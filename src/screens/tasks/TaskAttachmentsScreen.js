@@ -82,7 +82,7 @@ const TaskAttachmentsScreen = ({ route }) => {
 
       <TouchableOpacity style={styles.uploadCard} onPress={upload} disabled={busy}>
         {busy ? (
-          <ActivityIndicator color="#3B82F6" />
+          <ActivityIndicator color="#0F766E" />
         ) : (
           <>
             <Text style={styles.uploadIcon}>＋</Text>
@@ -126,58 +126,58 @@ const TaskAttachmentsScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 20,
   },
 
   input: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
-    color: '#E2E8F0',
+    borderColor: '#E2E8F0',
+    color: '#0F172A',
     paddingHorizontal: 12,
     paddingVertical: 10,
     marginBottom: 12,
   },
 
   uploadCard: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 24,
     alignItems: 'center',
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   uploadIcon: {
     fontSize: 30,
-    color: '#3B82F6',
+    color: '#0F766E',
     marginBottom: 6,
   },
 
   uploadText: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#E2E8F0',
+    color: '#0F172A',
   },
 
   uploadSub: {
     fontSize: 12,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 4,
     textAlign: 'center',
   },
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
   section: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#60A5FA',
+    color: '#0F766E',
     marginBottom: 10,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -194,19 +194,19 @@ const styles = StyleSheet.create({
   fileCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 14,
     borderRadius: 16,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   fileIcon: {
     width: 42,
     height: 42,
     borderRadius: 12,
-    backgroundColor: 'rgba(59,130,246,0.15)',
+    backgroundColor: 'rgba(15,118,110,0.12)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
@@ -219,12 +219,12 @@ const styles = StyleSheet.create({
   fileName: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#E2E8F0',
+    color: '#0F172A',
   },
 
   fileType: {
     fontSize: 12,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 2,
   },
 

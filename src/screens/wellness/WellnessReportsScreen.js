@@ -71,42 +71,42 @@ const WellnessReportsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 20,
     lineHeight: 20,
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 16,
     marginBottom: 14,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   title: {
     fontSize: 16,
     fontWeight: '800',
-    color: '#E2E8F0',
+    color: '#0F172A',
   },
 
   subtitle: {
     fontSize: 13,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 4,
     marginBottom: 10,
   },
@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
 
   muted: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     lineHeight: 20,
     marginTop: 8,
   },
 
   barBg: {
     height: 10,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: '#F8FAFC',
     borderRadius: 6,
     overflow: 'hidden',
     marginBottom: 10,
@@ -145,12 +145,12 @@ const styles = StyleSheet.create({
   barFill: {
     width: '65%',
     height: '100%',
-    backgroundColor: '#38BDF8',
+    backgroundColor: '#0F766E',
   },
 
   insight: {
     fontSize: 15,
-    color: '#E2E8F0',
+    color: '#0F172A',
     lineHeight: 22,
     marginTop: 8,
     fontWeight: '500',

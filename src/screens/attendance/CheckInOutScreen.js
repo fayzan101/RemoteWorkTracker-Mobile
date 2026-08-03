@@ -193,30 +193,30 @@ const CheckInOutScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 18,
   },
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 18,
     padding: 18,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
   label: {
     fontSize: 12,
-    color: '#94A3B8',
+    color: '#64748B',
     fontWeight: '700',
     marginBottom: 6,
   },
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
   meta: {
     marginTop: 8,
     fontSize: 13,
-    color: '#94A3B8',
+    color: '#64748B',
   },
   session: {
     marginTop: 4,
@@ -244,37 +244,37 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   fenceTitle: {
-    color: '#FCA5A5',
+    color: '#B91C1C',
     fontWeight: '800',
     marginBottom: 4,
   },
   fenceText: {
-    color: '#FECACA',
+    color: '#991B1B',
     fontSize: 13,
   },
   primaryBtn: {
-    backgroundColor: '#22C55E',
+    backgroundColor: '#0F766E',
     padding: 14,
     borderRadius: 14,
     alignItems: 'center',
     marginBottom: 10,
   },
   primaryText: {
-    color: '#020617',
+    color: '#FFFFFF',
     fontWeight: '900',
     fontSize: 15,
   },
   secondaryBtn: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 14,
     borderRadius: 14,
     alignItems: 'center',
     marginBottom: 10,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
   secondaryText: {
-    color: '#E2E8F0',
+    color: '#0F172A',
     fontWeight: '800',
   },
   disabled: {

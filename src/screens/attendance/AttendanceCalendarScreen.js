@@ -130,7 +130,7 @@ const AttendanceCalendarScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   headerRow: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   navTxt: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: '#64748B',
   },
 
   h1: {
@@ -155,24 +155,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 22,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 16,
     textAlign: 'center',
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 18,
     padding: 12,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   row: {
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 12,
     fontWeight: '800',
-    color: '#94A3B8',
+    color: '#64748B',
   },
 
   grid: {
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
 
   cellText: {
     fontSize: 13,
-    color: '#E2E8F0',
+    color: '#0F172A',
     fontWeight: '600',
   },
 
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
 
   present: {
-    backgroundColor: 'rgba(59,130,246,0.15)',
+    backgroundColor: 'rgba(15,118,110,0.12)',
   },
 
   presentText: {

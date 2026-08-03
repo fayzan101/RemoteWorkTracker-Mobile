@@ -17,6 +17,8 @@ import {
   completionRateFromOverview,
   mapNotifications,
 } from '../../services/api/helpers';
+import { colors } from '../../theme/colors';
+import { commonStyles } from '../../theme/commonStyles';
 
 const EmployeeDashboardScreen = ({ navigation }) => {
   const attendance = useApiResource(() => attendanceService.myList({ limit: 14 }), []);
@@ -36,10 +38,13 @@ const EmployeeDashboardScreen = ({ navigation }) => {
 
   return (
     <ScreenScroll contentContainerStyle={styles.container}>
-      <Text style={styles.greeting}>Welcome Back</Text>
-      <Text style={styles.sub}>
-        Track productivity, tasks and attendance seamlessly.
-      </Text>
+      <View style={styles.hero}>
+        <Text style={styles.kicker}>Remote Work Tracker</Text>
+        <Text style={styles.greeting}>Welcome back</Text>
+        <Text style={styles.sub}>
+          Track productivity, tasks, and attendance in one place.
+        </Text>
+      </View>
 
       <AsyncState
         loading={loading}
@@ -51,23 +56,23 @@ const EmployeeDashboardScreen = ({ navigation }) => {
         }}
       >
         <SectionCard
+          accent
           title="Daily Attendance"
           subtitle={
             attendanceFirst
               ? `First activity · ${new Date(attendanceFirst).toLocaleTimeString()}`
               : 'No desk activity logged for the latest day in range'
           }
-          style={styles.card}
         >
           <View style={styles.rowBetween}>
-            <Text style={styles.badge}>{todayAttendance?.firstSeen || attendanceFirst ? 'Active' : 'Pending'}</Text>
+            <Text style={styles.badge}>
+              {todayAttendance?.firstSeen || attendanceFirst ? 'Active' : 'Pending'}
+            </Text>
             <Text style={styles.smallText}>Today</Text>
           </View>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('AttendanceTab', {
-                screen: 'AttendanceHome',
-              })
+              navigation.navigate('AttendanceTab', { screen: 'AttendanceHome' })
             }
           >
             <Text style={styles.link}>Attendance & Device Pairing →</Text>
@@ -77,7 +82,6 @@ const EmployeeDashboardScreen = ({ navigation }) => {
         <SectionCard
           title="Working Hours"
           subtitle={`Today · ${Math.round(((todayAttendance?.activeSeconds || 0) / 3600) * 10) / 10}h`}
-          style={styles.card}
         >
           <Text style={styles.muted}>
             Target: 8h · Idle: {Math.round(((todayAttendance?.idleSeconds || 0) / 60) * 10) / 10}m
@@ -100,20 +104,15 @@ const EmployeeDashboardScreen = ({ navigation }) => {
         <SectionCard
           title="Tasks Overview"
           subtitle={`Completion this week · ${Math.round(productivityScore)}%`}
-          style={styles.card}
         >
           <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('TasksTab', {
-                screen: 'MyTasks',
-              })
-            }
+            onPress={() => navigation.navigate('TasksTab', { screen: 'MyTasks' })}
           >
             <Text style={styles.link}>View My Tasks →</Text>
           </TouchableOpacity>
         </SectionCard>
 
-        <SectionCard title="Productivity Score" subtitle="Last 7 days" style={styles.card}>
+        <SectionCard title="Productivity Score" subtitle="Last 7 days">
           <View style={styles.scoreContainer}>
             <Text style={styles.score}>{Math.round(productivityScore)}%</Text>
           </View>
@@ -122,40 +121,30 @@ const EmployeeDashboardScreen = ({ navigation }) => {
           </TouchableOpacity>
         </SectionCard>
 
-        <SectionCard title="Notifications" subtitle={`${unread} unread`} style={styles.card}>
+        <SectionCard title="Notifications" subtitle={`${unread} unread`}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('NotificationsTab', {
-                screen: 'NotificationCenter',
-              })
+              navigation.navigate('NotificationsTab', { screen: 'NotificationCenter' })
             }
           >
             <Text style={styles.link}>Open Notification Center →</Text>
           </TouchableOpacity>
         </SectionCard>
 
-        <SectionCard
-          title="Learning"
-          subtitle="Recommended courses from backend"
-          style={styles.card}
-        >
+        <SectionCard title="Learning" subtitle="Recommended courses from backend">
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('ProfileTab', {
-                screen: 'RecommendedCourses',
-              })
+              navigation.navigate('ProfileTab', { screen: 'RecommendedCourses' })
             }
           >
             <Text style={styles.link}>Browse Learning →</Text>
           </TouchableOpacity>
         </SectionCard>
 
-        <SectionCard title="Payroll" subtitle="Salary & Payslips" style={styles.card}>
+        <SectionCard title="Payroll" subtitle="Salary & Payslips">
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('ProfileTab', {
-                screen: 'SalarySummary',
-              })
+              navigation.navigate('ProfileTab', { screen: 'SalarySummary' })
             }
           >
             <Text style={styles.link}>View Payroll →</Text>
@@ -168,28 +157,25 @@ const EmployeeDashboardScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: '#020617',
+    paddingTop: 8,
+  },
+  hero: {
+    marginBottom: 8,
+  },
+  kicker: {
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+    marginBottom: 6,
   },
   greeting: {
-    fontSize: 32,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    marginBottom: 10,
+    ...commonStyles.screenTitle,
+    marginBottom: 8,
   },
   sub: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#94A3B8',
-    marginBottom: 28,
-  },
-  card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
-    marginBottom: 18,
-    padding: 18,
+    ...commonStyles.screenSubtitle,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -197,44 +183,33 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   badge: {
-    backgroundColor: 'rgba(34,197,94,0.18)',
-    color: '#22C55E',
-    paddingHorizontal: 14,
-    paddingVertical: 7,
-    borderRadius: 12,
-    overflow: 'hidden',
-    fontWeight: '700',
-    fontSize: 13,
+    ...commonStyles.badge,
   },
   smallText: {
-    color: '#94A3B8',
+    color: colors.textSecondary,
+    fontWeight: '600',
   },
   muted: {
-    color: '#94A3B8',
+    color: colors.textSecondary,
     marginBottom: 10,
   },
   progressBar: {
-    height: 8,
-    borderRadius: 6,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    overflow: 'hidden',
+    ...commonStyles.progressTrack,
   },
   progressFill: {
-    height: '100%',
-    backgroundColor: '#3B82F6',
+    ...commonStyles.progressFill,
   },
   scoreContainer: {
-    marginVertical: 8,
+    marginVertical: 4,
   },
   score: {
     fontSize: 42,
     fontWeight: '900',
-    color: '#3B82F6',
+    color: colors.primary,
+    letterSpacing: -1,
   },
   link: {
-    marginTop: 12,
-    color: '#60A5FA',
-    fontWeight: '700',
+    ...commonStyles.link,
   },
 });
 

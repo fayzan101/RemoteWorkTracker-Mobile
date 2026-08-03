@@ -63,52 +63,52 @@ const ProjectDetailScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   headerCard: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 20,
     borderRadius: 22,
     marginBottom: 20,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   h1: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
     marginBottom: 10,
   },
 
   body: {
     fontSize: 15,
-    color: '#94A3B8',
+    color: '#64748B',
     lineHeight: 22,
   },
 
   cardButton: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 18,
     borderRadius: 18,
     marginBottom: 14,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   cardTitle: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#E2E8F0',
+    color: '#0F172A',
     marginBottom: 6,
   },
 
   cardSubtitle: {
     fontSize: 13,
-    color: '#94A3B8',
+    color: '#64748B',
   },
 });
 

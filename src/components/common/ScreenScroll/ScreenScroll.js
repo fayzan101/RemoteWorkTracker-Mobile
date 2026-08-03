@@ -8,10 +8,7 @@ const ScreenScroll = ({ children, contentContainerStyle }) => (
   <SafeAreaView style={styles.safe} edges={['left', 'right', 'bottom']}>
     <ScrollView
       style={styles.scroll}
-      contentContainerStyle={[
-        styles.scrollContent,
-        contentContainerStyle,
-      ]}
+      contentContainerStyle={[styles.scrollContent, contentContainerStyle]}
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
     >
@@ -23,19 +20,17 @@ const ScreenScroll = ({ children, contentContainerStyle }) => (
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: colors.background, // keep dark here
+    backgroundColor: colors.background,
   },
-
   scroll: {
     flex: 1,
-    backgroundColor: colors.background, // IMPORTANT (fixes white bottom)
+    backgroundColor: colors.background,
   },
-
   scrollContent: {
-    flexGrow: 1, // IMPORTANT (fills full height)
+    flexGrow: 1,
     padding: spacing.lg,
     paddingBottom: spacing.tabBarClearance,
-    backgroundColor: colors.background, // IMPORTANT
+    backgroundColor: colors.background,
   },
 });
 

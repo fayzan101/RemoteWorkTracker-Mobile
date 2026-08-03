@@ -54,7 +54,7 @@ const TaskDetailScreen = ({ route, navigation }) => {
           style={[styles.btn, styles.primary]}
           onPress={() => navigation.navigate('UpdateTaskStatus', { taskId: task?.taskId, currentStatus: task?.status })}
         >
-          <Text style={styles.btnText}>Update Status</Text>
+          <Text style={styles.btnTextOnPrimary}>Update Status</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -79,36 +79,36 @@ const TaskDetailScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 20,
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 18,
     padding: 16,
     marginBottom: 20,
 
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   label: {
     fontSize: 12,
     fontWeight: '800',
-    color: '#60A5FA',
+    color: '#0F766E',
     textTransform: 'uppercase',
     letterSpacing: 1,
     marginBottom: 8,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 
   body: {
     fontSize: 14,
-    color: '#E2E8F0',
+    color: '#0F172A',
     lineHeight: 22,
   },
 
@@ -131,17 +131,22 @@ const styles = StyleSheet.create({
   },
 
   primary: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: '#0F766E',
   },
 
   secondary: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
-  btnText: {
+  btnTextOnPrimary: {
     color: '#FFFFFF',
+    fontWeight: '800',
+    fontSize: 14,
+  },
+  btnText: {
+    color: '#0F172A',
     fontWeight: '800',
     fontSize: 14,
   },

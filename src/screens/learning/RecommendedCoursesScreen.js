@@ -76,7 +76,7 @@ const RecommendedCoursesScreen = ({ navigation }) => {
           <Text style={styles.meta}>⏱ {c.duration}</Text>
 
           {enrollingId === c.id ? (
-            <ActivityIndicator color="#38BDF8" style={{ marginTop: 10 }} />
+            <ActivityIndicator color="#0F766E" style={{ marginTop: 10 }} />
           ) : (
             <Text style={styles.cta}>Start learning →</Text>
           )}
@@ -102,30 +102,30 @@ const RecommendedCoursesScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#020617',
+    backgroundColor: '#F1F5F9',
   },
 
   h1: {
     fontSize: 30,
     fontWeight: '800',
-    color: '#FFFFFF',
+    color: '#0F172A',
   },
 
   sub: {
     fontSize: 14,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 6,
     marginBottom: 20,
     lineHeight: 20,
   },
 
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 16,
     marginBottom: 14,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
 
   topRow: {
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '700',
-    color: '#E2E8F0',
+    color: '#0F172A',
     flex: 1,
     paddingRight: 10,
   },
@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
 
   meta: {
     fontSize: 13,
-    color: '#94A3B8',
+    color: '#64748B',
     marginTop: 10,
   },
 
   cta: {
     marginTop: 10,
-    color: '#38BDF8',
+    color: '#0F766E',
     fontWeight: '700',
     fontSize: 14,
   },
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
 
   viewAllText: {
-    color: '#38BDF8',
+    color: '#0F766E',
     fontWeight: '800',
     fontSize: 16,
   },

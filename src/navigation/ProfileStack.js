@@ -29,34 +29,12 @@ import CourseProgressScreen from '../screens/learning/CourseProgressScreen';
 import MyViolationsScreen from '../screens/compliance/MyViolationsScreen';
 import MyReviewsScreen from '../screens/performance/MyReviewsScreen';
 import MyGoalsScreen from '../screens/goals/MyGoalsScreen';
+import { stackScreenOptions } from './stackScreenOptions';
 
 const Stack = createNativeStackNavigator();
 
 const ProfileStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#020617',
-      },
-
-      headerShadowVisible: false,
-
-      headerTintColor: '#FFFFFF',
-
-      headerTitleStyle: {
-        fontWeight: '800',
-        fontSize: 20,
-      },
-
-      headerTitleAlign: 'center',
-
-      contentStyle: {
-        backgroundColor: '#020617',
-      },
-
-      animation: 'slide_from_right',
-    }}
-  >
+  <Stack.Navigator screenOptions={stackScreenOptions}>
     <Stack.Screen
       name="ProfileMain"
       component={ProfileScreen}

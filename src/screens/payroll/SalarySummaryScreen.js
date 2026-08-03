@@ -84,33 +84,33 @@ const SalarySummaryScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 20 },
   card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 18,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
-  month: { fontSize: 12, color: '#94A3B8', fontWeight: '700', marginBottom: 6 },
+  month: { fontSize: 12, color: '#64748B', fontWeight: '700', marginBottom: 6 },
   net: { fontSize: 34, fontWeight: '900', color: '#22C55E' },
-  meta: { fontSize: 12, color: '#94A3B8', marginBottom: 10 },
+  meta: { fontSize: 12, color: '#64748B', marginBottom: 10 },
   row: { flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 6 },
-  label: { fontSize: 13, color: '#94A3B8', fontWeight: '600' },
-  value: { fontSize: 13, color: '#E2E8F0', fontWeight: '700' },
+  label: { fontSize: 13, color: '#64748B', fontWeight: '600' },
+  value: { fontSize: 13, color: '#0F172A', fontWeight: '700' },
   cardBtn: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
-  cardTitle: { fontSize: 15, fontWeight: '800', color: '#E2E8F0' },
-  cardSub: { fontSize: 12, color: '#94A3B8', marginTop: 4 },
+  cardTitle: { fontSize: 15, fontWeight: '800', color: '#0F172A' },
+  cardSub: { fontSize: 12, color: '#64748B', marginTop: 4 },
 });
 
 export default SalarySummaryScreen;

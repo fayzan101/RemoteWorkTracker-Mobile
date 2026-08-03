@@ -1,5 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 function displayError(error) {
   if (error == null || error === '') return '';
@@ -12,7 +13,7 @@ const AsyncState = ({ loading, error, empty, onRetry, children }) => {
   if (loading) {
     return (
       <View style={styles.center}>
-        <ActivityIndicator />
+        <ActivityIndicator color={colors.primary} />
       </View>
     );
   }
@@ -40,10 +41,15 @@ const AsyncState = ({ loading, error, empty, onRetry, children }) => {
 
 const styles = StyleSheet.create({
   center: { paddingVertical: 24, alignItems: 'center' },
-  error: { color: '#fda4af', marginBottom: 8, textAlign: 'center' },
-  empty: { color: '#94A3B8' },
-  retryBtn: { paddingVertical: 8, paddingHorizontal: 12, borderRadius: 8, backgroundColor: '#1d4ed8' },
-  retryText: { color: '#fff', fontWeight: '700' },
+  error: { color: colors.danger, marginBottom: 8, textAlign: 'center' },
+  empty: { color: colors.textSecondary },
+  retryBtn: {
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    backgroundColor: colors.primary,
+  },
+  retryText: { color: colors.textOnPrimary, fontWeight: '700' },
 });
 
 export default AsyncState;

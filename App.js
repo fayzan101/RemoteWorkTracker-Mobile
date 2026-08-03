@@ -23,7 +23,7 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar
-        barStyle="light-content"
+        barStyle="dark-content"
         translucent
         backgroundColor="transparent"
       />

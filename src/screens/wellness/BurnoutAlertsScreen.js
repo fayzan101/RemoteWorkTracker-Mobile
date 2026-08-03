@@ -53,9 +53,9 @@ const BurnoutAlertsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 28, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20, lineHeight: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 28, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 20, lineHeight: 20 },
   card: { padding: 16, borderRadius: 16, borderWidth: 1, marginBottom: 14 },
   warningCard: {
     backgroundColor: 'rgba(245,158,11,0.08)',
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     marginBottom: 10,
   },
-  badgeTextWarn: { color: '#fff', fontSize: 12, fontWeight: '800', letterSpacing: 1 },
-  badgeTextOk: { color: '#fff', fontSize: 12, fontWeight: '800', letterSpacing: 1 },
-  msg: { fontSize: 15, color: '#E2E8F0', lineHeight: 22, fontWeight: '500' },
+  badgeTextWarn: { color: '#0F172A', fontSize: 12, fontWeight: '800', letterSpacing: 1 },
+  badgeTextOk: { color: '#0F172A', fontSize: 12, fontWeight: '800', letterSpacing: 1 },
+  msg: { fontSize: 15, color: '#0F172A', lineHeight: 22, fontWeight: '500' },
 });
 
 export default BurnoutAlertsScreen;

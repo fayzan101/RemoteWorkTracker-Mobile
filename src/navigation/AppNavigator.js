@@ -26,10 +26,10 @@ const AppNavigator = () => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#0F172A',
+          backgroundColor: '#F1F5F9',
         }}
       >
-        <ActivityIndicator size="large" color="#14B8A6" />
+        <ActivityIndicator size="large" color="#0F766E" />
       </View>
     );
   }
@@ -40,7 +40,8 @@ const AppNavigator = () => {
         screenOptions={{
           headerStyle: { backgroundColor: '#0F766E' },
           headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: 'bold' },
+          headerTitleStyle: { fontWeight: '700' },
+          contentStyle: { backgroundColor: '#F1F5F9' },
         }}
       >
         {isSignedIn ? (

@@ -51,25 +51,25 @@ const PayrollHistoryScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 20 },
   card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     borderRadius: 18,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
-  month: { fontSize: 15, fontWeight: '800', color: '#E2E8F0' },
-  amount: { fontSize: 13, color: '#94A3B8', marginTop: 4 },
+  month: { fontSize: 15, fontWeight: '800', color: '#0F172A' },
+  amount: { fontSize: 13, color: '#64748B', marginTop: 4 },
   right: { alignItems: 'flex-end' },
   status: { fontSize: 12, fontWeight: '800', color: '#22C55E' },
-  view: { fontSize: 12, color: '#60A5FA', marginTop: 4, fontWeight: '700' },
+  view: { fontSize: 12, color: '#0F766E', marginTop: 4, fontWeight: '700' },
 });
 
 export default PayrollHistoryScreen;

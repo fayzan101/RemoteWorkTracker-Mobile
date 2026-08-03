@@ -1,42 +1,16 @@
 import React from 'react';
-
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import NotificationCenterScreen from '../screens/notifications/NotificationCenterScreen';
+import { stackScreenOptions } from './stackScreenOptions';
 
 const Stack = createNativeStackNavigator();
 
 const NotificationsStack = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: '#020617',
-      },
-
-      headerShadowVisible: false,
-
-      headerTintColor: '#FFFFFF',
-
-      headerTitleStyle: {
-        fontWeight: '800',
-        fontSize: 20,
-      },
-
-      headerTitleAlign: 'center',
-
-      contentStyle: {
-        backgroundColor: '#020617',
-      },
-
-      animation: 'slide_from_right',
-    }}
-  >
+  <Stack.Navigator screenOptions={stackScreenOptions}>
     <Stack.Screen
       name="NotificationCenter"
       component={NotificationCenterScreen}
-      options={{
-        title: 'Notifications',
-      }}
+      options={{ title: 'Notifications' }}
     />
   </Stack.Navigator>
 );

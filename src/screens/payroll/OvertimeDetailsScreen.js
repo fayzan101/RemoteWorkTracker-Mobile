@@ -51,9 +51,9 @@ const OvertimeDetailsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 16 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 16 },
   summary: {
     backgroundColor: 'rgba(34,197,94,0.1)',
     borderRadius: 18,
@@ -62,22 +62,22 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(34,197,94,0.3)',
   },
-  totalLabel: { fontSize: 12, color: '#94A3B8', fontWeight: '700' },
+  totalLabel: { fontSize: 12, color: '#64748B', fontWeight: '700' },
   totalValue: { fontSize: 28, fontWeight: '900', color: '#22C55E', marginTop: 4 },
   card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     borderRadius: 16,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
   },
-  week: { fontSize: 15, fontWeight: '800', color: '#E2E8F0' },
-  meta: { fontSize: 12, color: '#94A3B8', marginTop: 4 },
-  amount: { fontSize: 16, fontWeight: '900', color: '#60A5FA' },
+  week: { fontSize: 15, fontWeight: '800', color: '#0F172A' },
+  meta: { fontSize: 12, color: '#64748B', marginTop: 4 },
+  amount: { fontSize: 16, fontWeight: '900', color: '#0F766E' },
 });
 
 export default OvertimeDetailsScreen;

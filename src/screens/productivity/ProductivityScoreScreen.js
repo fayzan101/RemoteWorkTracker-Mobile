@@ -49,20 +49,20 @@ const ProductivityScoreScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 28, fontWeight: '800', color: '#FFFFFF' },
-  score: { fontSize: 64, fontWeight: '900', color: '#3B82F6', marginVertical: 10 },
-  muted: { fontSize: 14, color: '#94A3B8', marginBottom: 24, lineHeight: 20 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 28, fontWeight: '800', color: '#0F172A' },
+  score: { fontSize: 64, fontWeight: '900', color: '#0F766E', marginVertical: 10 },
+  muted: { fontSize: 14, color: '#64748B', marginBottom: 24, lineHeight: 20 },
   cardLink: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: '#E2E8F0',
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
   },
-  linkTitle: { fontSize: 16, fontWeight: '700', color: '#E2E8F0', marginBottom: 4 },
-  linkSub: { fontSize: 13, color: '#94A3B8' },
+  linkTitle: { fontSize: 16, fontWeight: '700', color: '#0F172A', marginBottom: 4 },
+  linkSub: { fontSize: 13, color: '#64748B' },
 });
 
 export default ProductivityScoreScreen;

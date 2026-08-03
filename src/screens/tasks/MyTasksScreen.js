@@ -5,17 +5,20 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import ScreenScroll from '../../components/common/ScreenScroll/ScreenScroll';
 import { useApiResource } from '../../hooks/useApiResource';
 import { tasksService } from '../../services/tasks/tasks.service';
 import AsyncState from '../../components/common/AsyncState/AsyncState';
 import { listFromEnvelope, normalizeTaskStatus, taskStatusLabel } from '../../services/api/helpers';
+import { colors } from '../../theme/colors';
+import { commonStyles } from '../../theme/commonStyles';
 
 const getStatusColor = (status) => {
   const value = normalizeTaskStatus(status);
-  if (value === 'COMPLETED') return '#22C55E';
-  if (value === 'IN_PROGRESS') return '#F59E0B';
-  return '#60A5FA';
+  if (value === 'COMPLETED') return colors.success;
+  if (value === 'IN_PROGRESS') return colors.warning;
+  return colors.primary;
 };
 
 const MyTasksScreen = ({ navigation }) => {
@@ -35,8 +38,10 @@ const MyTasksScreen = ({ navigation }) => {
 
   return (
     <ScreenScroll contentContainerStyle={styles.container}>
-      <Text style={styles.h1}>My Tasks</Text>
-      <Text style={styles.sub}>Track and manage your daily work items</Text>
+      <Text style={commonStyles.screenTitle}>My Tasks</Text>
+      <Text style={commonStyles.screenSubtitle}>
+        Track and manage your daily work items
+      </Text>
 
       <AsyncState
         loading={tasksQuery.loading}
@@ -47,7 +52,7 @@ const MyTasksScreen = ({ navigation }) => {
         {tasks.map((t) => (
           <TouchableOpacity
             key={t.id}
-            style={styles.card}
+            style={commonStyles.card}
             onPress={() =>
               navigation.navigate('TaskDetail', {
                 taskId: t.id,
@@ -55,13 +60,14 @@ const MyTasksScreen = ({ navigation }) => {
                 task: t,
               })
             }
+            activeOpacity={0.85}
           >
             <View style={styles.row}>
               <Text style={styles.title}>{t.title}</Text>
               <View
                 style={[
                   styles.badge,
-                  { backgroundColor: `${getStatusColor(t.status)}20` },
+                  { backgroundColor: `${getStatusColor(t.status)}22` },
                 ]}
               >
                 <Text style={[styles.badgeText, { color: getStatusColor(t.status) }]}>
@@ -69,7 +75,10 @@ const MyTasksScreen = ({ navigation }) => {
                 </Text>
               </View>
             </View>
-            <Text style={styles.meta}>Priority: {t.priority}</Text>
+            <View style={styles.metaRow}>
+              <Text style={styles.meta}>Priority: {t.priority}</Text>
+              <Ionicons name="chevron-forward" size={16} color={colors.textMuted} />
+            </View>
           </TouchableOpacity>
         ))}
       </AsyncState>
@@ -78,22 +87,41 @@ const MyTasksScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 20 },
-  card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+  container: {
+    paddingTop: 8,
   },
-  row: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  title: { fontSize: 15, fontWeight: '700', color: '#E2E8F0', flex: 1, paddingRight: 10 },
-  badge: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 },
-  badgeText: { fontSize: 12, fontWeight: '800' },
-  meta: { marginTop: 8, fontSize: 12, color: '#94A3B8' },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: colors.text,
+    flex: 1,
+    paddingRight: 10,
+  },
+  badge: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 10,
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  metaRow: {
+    marginTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  meta: {
+    fontSize: 12,
+    color: colors.textSecondary,
+    fontWeight: '600',
+  },
 });
 
 export default MyTasksScreen;

@@ -50,19 +50,19 @@ const CourseProgressScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#020617' },
-  h1: { fontSize: 30, fontWeight: '800', color: '#FFFFFF' },
-  sub: { fontSize: 14, color: '#94A3B8', marginTop: 6, marginBottom: 16 },
-  progressText: { fontSize: 14, fontWeight: '700', color: '#38BDF8', marginBottom: 10 },
+  container: { padding: 20, backgroundColor: '#F1F5F9' },
+  h1: { fontSize: 30, fontWeight: '800', color: '#0F172A' },
+  sub: { fontSize: 14, color: '#64748B', marginTop: 6, marginBottom: 16 },
+  progressText: { fontSize: 14, fontWeight: '700', color: '#0F766E', marginBottom: 10 },
   barBg: {
     height: 10,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: '#F8FAFC',
     borderRadius: 999,
     overflow: 'hidden',
     marginBottom: 20,
   },
-  barFill: { height: '100%', backgroundColor: '#38BDF8' },
-  note: { fontSize: 13, color: '#94A3B8', lineHeight: 20 },
+  barFill: { height: '100%', backgroundColor: '#0F766E' },
+  note: { fontSize: 13, color: '#64748B', lineHeight: 20 },
 });
 
 export default CourseProgressScreen;

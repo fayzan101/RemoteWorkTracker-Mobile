@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Text,
   StyleSheet,
@@ -7,148 +6,119 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-
+import Ionicons from '@expo/vector-icons/Ionicons';
 import ScreenScroll from '../../components/common/ScreenScroll/ScreenScroll';
 import { resetToLogin } from '../../navigation/navigationRef';
 import { useAuth } from '../../context/AuthContext';
+import { colors } from '../../theme/colors';
+import { commonStyles } from '../../theme/commonStyles';
+
+const ProfileCard = ({ title, subtitle, onPress }) => (
+  <TouchableOpacity style={commonStyles.card} onPress={onPress} activeOpacity={0.85}>
+    <View style={styles.row}>
+      <View style={styles.rowText}>
+        <Text style={commonStyles.cardTitle}>{title}</Text>
+        <Text style={commonStyles.cardSubtitle}>{subtitle}</Text>
+      </View>
+      <Ionicons name="chevron-forward" size={18} color={colors.textMuted} />
+    </View>
+  </TouchableOpacity>
+);
 
 const ProfileScreen = ({ navigation }) => {
   const { signOut } = useAuth();
 
   return (
     <ScreenScroll contentContainerStyle={styles.container}>
-      <Text style={styles.h1}>Profile</Text>
-
-      <Text style={styles.sub}>
+      <Text style={commonStyles.screenTitle}>Profile</Text>
+      <Text style={commonStyles.screenSubtitle}>
         Manage your account, privacy, and preferences
       </Text>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Account</Text>
-
-        <TouchableOpacity
-          style={styles.card}
+        <Text style={commonStyles.sectionLabel}>Account</Text>
+        <ProfileCard
+          title="Edit Profile"
+          subtitle="Name, role, contact"
           onPress={() => navigation.navigate('EditProfile')}
-        >
-          <Text style={styles.title}>Edit Profile</Text>
-          <Text style={styles.subtitle}>Name, role, contact</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Change Password"
+          subtitle="Update your login security"
           onPress={() => navigation.navigate('ProfileChangePassword')}
-        >
-          <Text style={styles.title}>Change Password</Text>
-          <Text style={styles.subtitle}>Update your login security</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Device Information"
+          subtitle="Connected devices & sessions"
           onPress={() => navigation.navigate('DeviceInformation')}
-        >
-          <Text style={styles.title}>Device Information</Text>
-          <Text style={styles.subtitle}>Connected devices & sessions</Text>
-        </TouchableOpacity>
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Work</Text>
-
-        <TouchableOpacity
-          style={styles.card}
+        <Text style={commonStyles.sectionLabel}>Work</Text>
+        <ProfileCard
+          title="Projects"
+          subtitle="Active assignments"
           onPress={() => navigation.navigate('ProjectList')}
-        >
-          <Text style={styles.title}>Projects</Text>
-          <Text style={styles.subtitle}>Active assignments</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Goals"
+          subtitle="Progress & deadlines"
           onPress={() => navigation.navigate('MyGoals')}
-        >
-          <Text style={styles.title}>Goals</Text>
-          <Text style={styles.subtitle}>Progress & deadlines</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Payroll"
+          subtitle="Salary & payments"
           onPress={() => navigation.navigate('SalarySummary')}
-        >
-          <Text style={styles.title}>Payroll</Text>
-          <Text style={styles.subtitle}>Salary & payments</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Compliance"
+          subtitle="My violations"
           onPress={() => navigation.navigate('MyViolations')}
-        >
-          <Text style={styles.title}>Compliance</Text>
-          <Text style={styles.subtitle}>My violations</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Performance"
+          subtitle="My reviews"
           onPress={() => navigation.navigate('MyReviews')}
-        >
-          <Text style={styles.title}>Performance</Text>
-          <Text style={styles.subtitle}>My reviews</Text>
-        </TouchableOpacity>
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Wellness</Text>
-
-        <TouchableOpacity
-          style={styles.card}
+        <Text style={commonStyles.sectionLabel}>Wellness</Text>
+        <ProfileCard
+          title="Mood Tracker"
+          subtitle="Daily check-ins"
           onPress={() => navigation.navigate('MoodSubmission')}
-        >
-          <Text style={styles.title}>Mood Tracker</Text>
-          <Text style={styles.subtitle}>Daily check-ins</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Reports"
+          subtitle="Performance & wellbeing insights"
           onPress={() => navigation.navigate('WellnessReports')}
-        >
-          <Text style={styles.title}>Reports</Text>
-          <Text style={styles.subtitle}>Performance & wellbeing insights</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Burnout Alerts"
+          subtitle="Risk detection system"
           onPress={() => navigation.navigate('BurnoutAlerts')}
-        >
-          <Text style={styles.title}>Burnout Alerts</Text>
-          <Text style={styles.subtitle}>Risk detection system</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="AI Suggestions"
+          subtitle="Personalized recommendations"
           onPress={() => navigation.navigate('AIWellnessSuggestions')}
-        >
-          <Text style={styles.title}>AI Suggestions</Text>
-          <Text style={styles.subtitle}>Personalized recommendations</Text>
-        </TouchableOpacity>
+        />
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Learning</Text>
-
-        <TouchableOpacity
-          style={styles.card}
+        <Text style={commonStyles.sectionLabel}>Learning</Text>
+        <ProfileCard
+          title="Courses"
+          subtitle="Recommended learning paths"
           onPress={() => navigation.navigate('RecommendedCourses')}
-        >
-          <Text style={styles.title}>Courses</Text>
-          <Text style={styles.subtitle}>Recommended learning paths</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.card}
+        />
+        <ProfileCard
+          title="Enrolled Courses"
+          subtitle="Continue your learning"
           onPress={() => navigation.navigate('EnrolledCourses')}
-        >
-          <Text style={styles.title}>Enrolled Courses</Text>
-          <Text style={styles.subtitle}>Continue your learning</Text>
-        </TouchableOpacity>
+        />
       </View>
 
       <TouchableOpacity
@@ -175,70 +145,31 @@ const ProfileScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: '#020617',
+    paddingTop: 8,
   },
-
-  h1: {
-    fontSize: 30,
-    fontWeight: '800',
-    color: '#FFFFFF',
-  },
-
-  sub: {
-    fontSize: 14,
-    color: '#94A3B8',
-    marginTop: 6,
-    marginBottom: 20,
-  },
-
   section: {
-    marginBottom: 20,
+    marginBottom: 18,
   },
-
-  sectionTitle: {
-    fontSize: 13,
-    fontWeight: '800',
-    color: '#60A5FA',
-    marginBottom: 10,
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-  },
-
-  card: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    padding: 14,
-    borderRadius: 16,
-    marginBottom: 10,
-
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
-  },
-
-  title: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: '#E2E8F0',
-  },
-
-  subtitle: {
-    fontSize: 12,
-    color: '#94A3B8',
-    marginTop: 4,
-  },
-
-  logout: {
-    marginTop: 10,
-    padding: 16,
-    borderRadius: 16,
-    backgroundColor: 'rgba(239,68,68,0.12)',
-    borderWidth: 1,
-    borderColor: 'rgba(239,68,68,0.3)',
+  row: {
+    flexDirection: 'row',
     alignItems: 'center',
   },
-
+  rowText: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  logout: {
+    marginTop: 6,
+    marginBottom: 8,
+    padding: 16,
+    borderRadius: 16,
+    backgroundColor: colors.dangerSoft,
+    borderWidth: 1,
+    borderColor: '#FECACA',
+    alignItems: 'center',
+  },
   logoutText: {
-    color: '#EF4444',
+    color: colors.danger,
     fontWeight: '800',
   },
 });
